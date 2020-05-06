@@ -10,12 +10,12 @@ def artifact_id = 'snappydb-lib'
 def sonatypeRepositoryUrl
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 29
     buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 22
+        targetSdkVersion 29
         versionCode 5
         versionName version
     }
@@ -34,7 +34,7 @@ android {
 
     // call regular ndk-build script from app directory
     task ndkBuild(type: Exec) {
-        commandLine "${getNdkPath()}/ndk-build", '-C', file('src/main/jni/').absolutePath
+        commandLine "${getNdkPath()}/ndk-build.cmd", '-C', file('src/main/jni/').absolutePath
     }
 
     tasks.withType(JavaCompile) {
@@ -154,5 +154,5 @@ def isSnapshotBuild() {
 }
 
 def getNdkPath () {
-    System.env.ANDROID_NDK_HOME?:"/Android/android-ndk-r10d"
+    System.env.ANDROID_NDK_HOME?:"C:/Users/Dev/AppData/Local/Android/Sdk/ndk/android-ndk-r10e"
 }
